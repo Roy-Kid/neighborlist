@@ -1,0 +1,35 @@
+[build-system]
+requires = ["scikit-build-core>=0.10", "torch>=2.4"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "neighborlist"
+version = "0.1.0"
+description = "Batched cutoff neighbour lists for PyTorch: every periodic image, CPU and CUDA, torch.compile-ready."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "LICENSES/*"]
+requires-python = ">=3.10"
+dependencies = ["torch>=2.4"]
+keywords = ["neighbor list", "neighbour list", "molecular dynamics", "pytorch", "machine learning potentials"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.urls]
+Repository = "https://github.com/Roy-Kid/neighborlist"
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+cmake.version = ">=3.26"
+cmake.build-type = "Release"
+wheel.packages = ["src/neighborlist"]
+
+[tool.scikit-build.cmake.define]
+NEIGHBORLIST_CUDA = { env = "NEIGHBORLIST_CUDA", default = "AUTO" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

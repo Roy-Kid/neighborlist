@@ -1,0 +1,10 @@
+build/
+dist/
+_skbuild/
+*.egg-info/
+__pycache__/
+*.so
+*.dylib
+.venv*/
+.pytest_cache/
+.dist-*/
